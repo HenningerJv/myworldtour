@@ -88,3 +88,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   }
 });
+
+function alert(confirmeSenha: string) {
+  throw new Error("Function not implemented.");
+}

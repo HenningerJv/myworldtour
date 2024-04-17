@@ -5,14 +5,16 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export default function Home() {
   const [nome, setNome] = useState('');
+  const [nacionalidade, setNacionalidade] = useState('')
 
   return (
     <LinearGradient
       colors={['#00FF94', '#00FF94', '#2F829C']}
       style={styles.linearGradient}>
+        <Text style={styles.text}>Bem-vindo, Sr Fulano</Text>
+        <Text style={styles.text}>Nacionalidade: Brasileira</Text>
       <View style={styles.container}>
         <StatusBar hidden />
-        <Text style={styles.text}>Bem-vindo, Sr</Text>
       </View>
     </LinearGradient>
   )
@@ -24,22 +26,22 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
+    height: 7,
     justifyContent: 'center',
     display: 'flex',
-    flexDirection: 'column',
     padding: 6,
     width: '90%',
     backgroundColor: 'white',
     borderRadius: 7,
     paddingTop: 1,
-    alignItems: 'center',
-    alignContent: 'center',
+    marginLeft: 19
   },
   text: {
     fontSize: 40,
     marginBottom: 70,
     fontWeight: '500',
     color: 'black',
+    marginLeft: 60
   },
   btnCadastro: {
     backgroundColor: '#00FF94',
