@@ -83,3 +83,7 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   }
 });
+
+function alert(email: string) {
+  throw new Error("Function not implemented.");
+}

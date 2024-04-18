@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
+import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Button, Alert } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import Cadastro from "./Cadastro";
+import navigation from "./navigation";
+import { useNavigation } from '@react-navigation/native';
+import Home from "./Home";
 
 
 export default function Login() {
@@ -11,6 +17,17 @@ export default function Login() {
     alert(email);
     alert(senha)
   }
+
+  const navigation = useNavigation();
+
+  const handleLogin = () => {
+    if (email === 'usuario@example.com' && senha === '123456') {
+      navigation.navigate("Home");
+    } else {
+      Alert.alert('Erro', 'Credenciais inválidas');
+    }
+  };
+
   return (
     <LinearGradient
       colors={['#00FF94', '#00FF94', '#2F829C']}
@@ -18,11 +35,15 @@ export default function Login() {
       <View style={styles.container}>
         <StatusBar hidden />
         <Text style={styles.text}>Bem-vindo</Text>
-        <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} />
+        <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} value="email" />
+        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} value="senha" />
         <TouchableOpacity style={styles.btnCadastro} onPress={() => login()}>
           <Text style={styles.btnCadastro}>Entrar</Text>
         </TouchableOpacity>
+        <Button
+          title="Abrir sua conta!"
+          onPress={() => navigation.navigate('Cadastro')}
+        />
       </View>
     </LinearGradient>
   )

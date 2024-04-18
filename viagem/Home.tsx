@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import NavBar from "./navBar";
 import LinearGradient from 'react-native-linear-gradient';
 
 
@@ -8,13 +11,16 @@ export default function Home() {
   const [nacionalidade, setNacionalidade] = useState('')
 
   return (
+    <NavBar />
     <LinearGradient
       colors={['#00FF94', '#00FF94', '#2F829C']}
       style={styles.linearGradient}>
-        <Text style={styles.text}>Bem-vindo, Sr Fulano</Text>
+        <Text style={styles.text}>Bem-vindo, {nome}</Text>
         <Text style={styles.text}>Nacionalidade: Brasileira</Text>
       <View style={styles.container}>
         <StatusBar hidden />
+        <View style={styles.container2}>
+        </View>
       </View>
     </LinearGradient>
   )
@@ -64,5 +70,9 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
+  },
+  container2: {
+    backgroundColor: '#00FF94',
+    width: '40%'
   }
 });
