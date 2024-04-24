@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
+import NavBar from "./navBar";
 
 
 export default function ConfirmeCompra() {
   const [nome, setNome] = useState('');
+  const [nacionalidade, setNacionalidade] = useState('')
   const [cpf, setCpf] = useState('');
   const [endereco, setEndereco] = useState('');
   const [email, setEmail] = useState('');
@@ -17,23 +19,28 @@ export default function ConfirmeCompra() {
   }
 
   return (
-    <LinearGradient
-      colors={['#00FF94', '#00FF94', '#2F829C']}
-      style={styles.linearGradient}>
-      <View style={styles.container}>
-        <StatusBar hidden />
-        <Text style={styles.text}>Bem-vindo</Text>
-        <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setEndereco(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNumero(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCpf(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCvv(text)} />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNome(text)} />
-        <TouchableOpacity style={styles.btnCadastro} onPress={() => confirmar()}>
-          <Text style={styles.btnCadastro}>Confirmar</Text>
-        </TouchableOpacity>
-      </View>
-    </LinearGradient>
+    <>
+      <NavBar />
+      <LinearGradient
+        colors={['#00FF94', '#00FF94', '#2F829C']}
+        style={styles.linearGradient}>
+        <Text style={styles.text}>Bem-vindo, {nome}</Text>
+        <Text style={styles.text}>Nacionalidade: {nacionalidade}</Text>
+        <View style={styles.container}>
+          <StatusBar hidden />
+          <Text style={styles.text}>Bem-vindo</Text>
+          <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setEndereco(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNumero(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCpf(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCvv(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNome(text)} />
+          <TouchableOpacity style={styles.btnCadastro} onPress={() => confirmar()}>
+            <Text style={styles.btnCadastro}>Confirmar</Text>
+          </TouchableOpacity>
+        </View>
+      </LinearGradient>
+    </>
   )
 }
 

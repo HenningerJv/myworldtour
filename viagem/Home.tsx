@@ -11,18 +11,20 @@ export default function Home() {
   const [nacionalidade, setNacionalidade] = useState('')
 
   return (
-    <NavBar />
-    <LinearGradient
-      colors={['#00FF94', '#00FF94', '#2F829C']}
-      style={styles.linearGradient}>
+    <>
+      <NavBar />
+      <LinearGradient
+        colors={['#00FF94', '#00FF94', '#2F829C']}
+        style={styles.linearGradient}>
         <Text style={styles.text}>Bem-vindo, {nome}</Text>
-        <Text style={styles.text}>Nacionalidade: Brasileira</Text>
-      <View style={styles.container}>
-        <StatusBar hidden />
-        <View style={styles.container2}>
+        <Text style={styles.text}>Nacionalidade: {nacionalidade}</Text>
+        <View style={styles.container}>
+          <StatusBar hidden />
+          <View style={styles.container2}>
+          </View>
         </View>
-      </View>
-    </LinearGradient>
+      </LinearGradient>
+    </>
   )
 }
 

@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Button, Alert } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
+import { Link, NavigationContainer } from '@react-navigation/native';
 import Cadastro from "./Cadastro";
 import navigation from "./navigation";
 import { useNavigation } from '@react-navigation/native';
@@ -22,7 +22,7 @@ export default function Login() {
 
   const handleLogin = () => {
     if (email === 'usuario@example.com' && senha === '123456') {
-      navigation.navigate("Home");
+      navigation.navigate('Home');
     } else {
       Alert.alert('Erro', 'Credenciais inválidas');
     }
@@ -40,10 +40,7 @@ export default function Login() {
         <TouchableOpacity style={styles.btnCadastro} onPress={() => login()}>
           <Text style={styles.btnCadastro}>Entrar</Text>
         </TouchableOpacity>
-        <Button
-          title="Abrir sua conta!"
-          onPress={() => navigation.navigate('Cadastro')}
-        />
+        <Link to={"Cadastro"} children={undefined}></Link>
       </View>
     </LinearGradient>
   )
