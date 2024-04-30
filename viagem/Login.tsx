@@ -22,7 +22,7 @@ export default function Login() {
 
   const handleLogin = () => {
     if (email === 'usuario@example.com' && senha === '123456') {
-      navigation.navigate('Home');
+      navigation.navigate(Home);
     } else {
       Alert.alert('Erro', 'Credenciais inválidas');
     }
@@ -38,9 +38,11 @@ export default function Login() {
         <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} value="email" />
         <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} value="senha" />
         <TouchableOpacity style={styles.btnCadastro} onPress={() => login()}>
-          <Text style={styles.btnCadastro}>Entrar</Text>
+          <Text style={styles.btnCadastro} onPress={handleLogin}>Entrar</Text>
         </TouchableOpacity>
-        <Link to={"Cadastro"} children={undefined}></Link>
+        <TouchableOpacity onPress={Cadastro}>
+          <Text style={styles.linkText}>Clique aqui</Text>
+        </TouchableOpacity>
       </View>
     </LinearGradient>
   )
@@ -80,6 +82,10 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     width: '60%',
     textAlign: 'center'
+  },
+  linkText: {
+    color: 'blue',
+    textDecorationLine: 'underline',
   },
   textInput: {
     width: '90%',

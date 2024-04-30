@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import NavBar from "./navBar";
+import { Picker } from "@react-native-picker/picker";
 
 
 export default function ConfirmeCompra() {
@@ -10,12 +11,17 @@ export default function ConfirmeCompra() {
   const [cpf, setCpf] = useState('');
   const [endereco, setEndereco] = useState('');
   const [email, setEmail] = useState('');
-  const [numero, setNumero] = useState('');
+  const [numeroCartao, setNumeroCartao] = useState('');
   const [cvv, setCvv] = useState('');
+  const [tipoPagamento, setTipoPagamento] = useState('');
 
   const confirmar = () => {
     alert(email);
     alert(nome)
+    alert(cvv);
+    alert(cpf)
+    alert(endereco);
+    alert(numeroCartao)
   }
 
   return (
@@ -30,11 +36,19 @@ export default function ConfirmeCompra() {
           <StatusBar hidden />
           <Text style={styles.text}>Bem-vindo</Text>
           <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setEndereco(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNumero(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCpf(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setCvv(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setNome(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o endereço da cobrança:" onChangeText={text => setEndereco(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Digite o número do Cartão:" onChangeText={text => setNumeroCartao(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o CPF do Titular:" onChangeText={text => setCpf(text)} />
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o CVV:" onChangeText={text => setCvv(text)} />
+          <Picker selectedValue={tipoPagamento}
+            onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
+              setTipoPagamento(itemValue)
+            }>
+            <Picker.Item label='Selecione o tipo de Pagamento' value='' />
+            <Picker.Item label='Débito' value='debito' />
+            <Picker.Item label='Crédito' value='credito' />
+          </Picker>
+          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Nome do Titular do Cartão:" onChangeText={text => setNome(text)} />
           <TouchableOpacity style={styles.btnCadastro} onPress={() => confirmar()}>
             <Text style={styles.btnCadastro}>Confirmar</Text>
           </TouchableOpacity>
