@@ -1,7 +1,13 @@
 import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
-import NavBar from "./navBar";
+import { MdOutlineAirplaneTicket } from "react-icons/md";
+import { IoHomeOutline } from "react-icons/io5";
+import { BsFillSuitcaseLgFill } from "react-icons/bs";
+import { FaPlaneDeparture } from "react-icons/fa6";
+import { FaCoins } from "react-icons/fa6";
+import { CiSettings } from "react-icons/ci";
+import { CiLogout } from "react-icons/ci";
 import { Picker } from "@react-native-picker/picker";
 
 
@@ -26,7 +32,6 @@ export default function ConfirmeCompra() {
 
   return (
     <>
-      <NavBar />
       <LinearGradient
         colors={['#00FF94', '#00FF94', '#2F829C']}
         style={styles.linearGradient}>

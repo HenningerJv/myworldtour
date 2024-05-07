@@ -22,7 +22,7 @@ export default function Login() {
 
   const handleLogin = () => {
     if (email === 'usuario@example.com' && senha === '123456') {
-      navigation.navigate(Home);
+      navigation.navigate('Home'); 
     } else {
       Alert.alert('Erro', 'Credenciais inválidas');
     }

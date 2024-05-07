@@ -2,6 +2,9 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
+import navigation from "./navigation";
+import Login from "./Login";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Cadastro() {
@@ -14,15 +17,20 @@ export default function Cadastro() {
   const [nacionalidade, setNacionalidade] = useState('')
   const [genero, setGenero] = useState('')
 
+  const navigation = useNavigation();
+
   const cadastro = () => {
-    alert(nome);
-    alert(cpf);
-    alert(email);
-    alert(endereco);
-    alert(senha)
-    alert(confirmeSenha)
-    alert(nacionalidade)
-    alert(genero)
+    if (!nome || !email || !cpf || !senha || !confirmeSenha || !endereco || !nacionalidade || !genero) {
+      alert('Preencha todos os campos');
+      return;
+    }
+
+    if (senha !== confirmeSenha) {
+      alert('As senhas não coincidem');
+      return;
+    }
+
+    navigation.navigate('Login');
   }
   return (
     <LinearGradient
