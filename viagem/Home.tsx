@@ -9,6 +9,8 @@ import { FaPlaneDeparture } from "react-icons/fa6";
 import { FaCoins } from "react-icons/fa6";
 import { CiSettings } from "react-icons/ci";
 import { CiLogout } from "react-icons/ci";
+import { FaHotel } from "react-icons/fa6";
+import { FaWalking } from "react-icons/fa";
 import LinearGradient from 'react-native-linear-gradient';
 
 

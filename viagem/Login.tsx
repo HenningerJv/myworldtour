@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Button, Alert } from "react-native"
 import LinearGradient from 'react-native-linear-gradient';
 import { createStackNavigator } from '@react-navigation/stack';
-import { Link, NavigationContainer } from '@react-navigation/native';
 import Cadastro from "./Cadastro";
 import navigation from "./navigation";
 import { useNavigation } from '@react-navigation/native';
@@ -12,11 +11,6 @@ import Home from "./Home";
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-
-  const login = () => {
-    alert(email);
-    alert(senha)
-  }
 
   const navigation = useNavigation();
 
@@ -37,11 +31,11 @@ export default function Login() {
         <Text style={styles.text}>Bem-vindo</Text>
         <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} value="email" />
         <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} value="senha" />
-        <TouchableOpacity style={styles.btnCadastro} onPress={() => login()}>
+        <TouchableOpacity style={styles.btnCadastro} onPress={() => Home()}>
           <Text style={styles.btnCadastro} onPress={handleLogin}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={Cadastro}>
-          <Text style={styles.linkText}>Clique aqui</Text>
+          <Text style={styles.linkText}>Não tem Conta?</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>

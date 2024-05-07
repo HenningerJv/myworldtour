@@ -83,7 +83,7 @@ export default function Cadastro() {
         </Picker>
         <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} />
         <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Confirme sua senha:" onChangeText={text => setConfirmeSenha(text)} />
-        <TouchableOpacity style={styles.btnCadastro} onPress={() => cadastro()}>
+        <TouchableOpacity style={styles.btnCadastro} onPress={() => Login()}>
           <Text style={styles.btnCadastro}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
