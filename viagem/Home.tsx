@@ -1,17 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native"
-import { createStackNavigator } from '@react-navigation/stack';
-import { NavigationContainer } from '@react-navigation/native';
-import { MdOutlineAirplaneTicket } from "react-icons/md";
-import { IoHomeOutline } from "react-icons/io5";
-import { BsFillSuitcaseLgFill } from "react-icons/bs";
-import { FaPlaneDeparture } from "react-icons/fa6";
-import { FaCoins } from "react-icons/fa6";
-import { CiSettings } from "react-icons/ci";
-import { CiLogout } from "react-icons/ci";
-import { FaHotel } from "react-icons/fa6";
-import { FaWalking } from "react-icons/fa";
+import { Picker } from "@react-native-picker/picker";
+import { useState } from "react";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
+import Home from "./Home";
+import React, { useState } from "react";
+import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
+import { LiaHomeSolid } from "react-icons/lia";
+import { TbTicket } from "react-icons/tb";
+import { CiLogout } from "react-icons/ci";
+import { FaSuitcase } from "react-icons/fa6";
+import { IoSettingsOutline } from "react-icons/io5";
+import { LiaCoinsSolid } from "react-icons/lia";
+import { MdHotel } from "react-icons/md"
 
 
 export default function Home() {
@@ -25,6 +26,36 @@ export default function Home() {
         style={styles.linearGradient}>
         <Text style={styles.text}>Bem-vindo, {nome}</Text>
         <Text style={styles.text}>Nacionalidade: {nacionalidade}</Text>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <LiaHomeSolid name="home-outline" size={30} color="black" />
+            <Text>Home</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+            <TbTicket name="home-outline" size={30} color="black" />
+            <Text>Passagens</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <MdHotel name="home-outline" size={30} color="black" />
+            <Text>Reservas</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <FaSuitcase name="home-outline" size={30} color="black" />
+            <Text>Viagens</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
+            <LiaCoinsSolid name="home-outline" size={30} color="black" />
+            <Text>Conversor</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <IoSettingsOutline name="settings-outline" size={30} color="black" />
+            <Text>Configurações</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+            <CiLogout name="log-out-outline" size={30} color="black" />
+            <Text>Sair</Text>
+          </TouchableOpacity>
+        </View>
         <View style={styles.container}>
           <StatusBar hidden />
           <View style={styles.container2}>
@@ -83,5 +114,10 @@ const styles = StyleSheet.create({
   container2: {
     backgroundColor: '#00FF94',
     width: '40%'
-  }
+  },
+  iconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    marginTop: 20,
+  },
 });
