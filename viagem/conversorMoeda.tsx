@@ -17,7 +17,10 @@ import { MdHotel } from "react-icons/md";
 export default function ConversorMoeda() {
     const [nome, setNome] = useState('');
     const [nacionalidade, setNacionalidade] = useState('')
-    const [tipoMoeda, setTipoMoeda] = useState('')
+    const [moedaOrigem, setMoedaOrigem] = useState('');
+    const [moedaDestino, setMoedaDestino] = useState('');
+    const [valor, setValor] = useState('');
+    const [resultado, setResultado] = useState('');
     const [numeroConta, setNumeroConta] = useState('')
 
 
@@ -60,9 +63,9 @@ export default function ConversorMoeda() {
                 </View>
                 <View style={styles.container}>
                     <Text style={styles.text}>Converte Sua Moeda</Text>
-                    <Picker selectedValue={tipoMoeda}
+                    <Picker selectedValue={moedaOrigem}
                         onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
-                            setTipoMoeda(itemValue)
+                            setMoedaOrigem(itemValue)
                         }>
                         <Picker.Item label='Selecione a Moeda que será convertida' value='' />
                         <Picker.Item label='Real Brasileiro' value='realBrasileiro' />
@@ -73,9 +76,9 @@ export default function ConversorMoeda() {
                         <Picker.Item label='Iene Japonês' value='ieneJapones' />
                     </Picker>
                     <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Quanto quer converter" onChangeText={text => setTipoMoeda(text)} />
-                    <Picker selectedValue={tipoMoeda}
+                    <Picker selectedValue={moedaDestino}
                         onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
-                            setTipoMoeda(itemValue)
+                            setMoedaDestino(itemValue)
                         }>
                         <Picker.Item label='Selecione a Moeda Convertedora' value='' />
                         <Picker.Item label='Real Brasileiro' value='realBrasileiro' />
@@ -99,57 +102,56 @@ export default function ConversorMoeda() {
 
 const styles = StyleSheet.create({
     linearGradient: {
-      flex: 1,
+        flex: 1,
     },
     container: {
-      flex: 1,
-      height: 7,
-      justifyContent: 'center',
-      display: 'flex',
-      padding: 6,
-      width: '90%',
-      backgroundColor: 'white',
-      borderRadius: 7,
-      paddingTop: 1,
-      marginLeft: 19
+        flex: 1,
+        height: 7,
+        justifyContent: 'center',
+        display: 'flex',
+        padding: 6,
+        width: '90%',
+        backgroundColor: 'white',
+        borderRadius: 7,
+        paddingTop: 1,
+        marginLeft: 19
     },
     text: {
-      fontSize: 40,
-      marginBottom: 70,
-      fontWeight: '500',
-      color: 'black',
-      marginLeft: 60
+        fontSize: 40,
+        marginBottom: 70,
+        fontWeight: '500',
+        color: 'black',
+        marginLeft: 60
     },
     btnCadastro: {
-      backgroundColor: '#00FF94',
-      color: 'black',
-      fontWeight: '600',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: 9,
-      alignContent: 'center',
-      width: '60%'
+        backgroundColor: '#00FF94',
+        color: 'black',
+        fontWeight: '600',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 9,
+        alignContent: 'center',
+        width: '60%'
     },
     textInput: {
-      width: '90%',
-      height: 40,
-      borderRadius: 5,
-      backgroundColor: '#fff',
-      borderColor: 'transparent',
-      shadowColor: 'black',
-      marginBottom: 10,
-      paddingLeft: 10,
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
+        width: '90%',
+        height: 40,
+        borderRadius: 5,
+        backgroundColor: '#fff',
+        borderColor: 'transparent',
+        shadowColor: 'black',
+        marginBottom: 10,
+        paddingLeft: 10,
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
     },
     container2: {
-      backgroundColor: '#00FF94',
-      width: '40%'
+        backgroundColor: '#00FF94',
+        width: '40%'
     },
     iconContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      marginTop: 20,
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 20,
     },
-  });
-  
+});

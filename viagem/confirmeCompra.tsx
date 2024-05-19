@@ -67,10 +67,28 @@ export default function ConfirmeCompra() {
           <StatusBar hidden />
           <Text style={styles.text}>Bem-vindo</Text>
           <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o endereço da cobrança:" onChangeText={text => setEndereco(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Digite o número do Cartão:" onChangeText={text => setNumeroCartao(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o CPF do Titular:" onChangeText={text => setCpf(text)} />
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Informe o CVV:" onChangeText={text => setCvv(text)} />
+          <TextInput style={styles.textInput} placeholder="Informe o endereço da cobrança:" onChangeText={text => setEndereco(text)} />
+          <TextInput
+            keyboardType="numeric"
+            secureTextEntry={true}
+            style={styles.textInput}
+            placeholder="Digite o número do Cartão:"
+            onChangeText={text => setNumeroCartao(text)}
+          />
+          <TextInput
+            keyboardType="numeric"
+            secureTextEntry={true}
+            style={styles.textInput}
+            placeholder="Digite o CPF do titular:"
+            onChangeText={text => setCpf(text)}
+          />
+          <TextInput
+            keyboardType="numeric"
+            secureTextEntry={true}
+            style={styles.textInput}
+            placeholder="Digite o CVV:"
+            onChangeText={text => setCvv(text)}
+          />
           <Picker selectedValue={tipoPagamento}
             onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
               setTipoPagamento(itemValue)
@@ -79,8 +97,8 @@ export default function ConfirmeCompra() {
             <Picker.Item label='Débito' value='debito' />
             <Picker.Item label='Crédito' value='credito' />
           </Picker>
-          <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Nome do Titular do Cartão:" onChangeText={text => setNome(text)} />
-          <TouchableOpacity style={styles.btnCadastro} onPress={() => confirmar()}>
+          <TextInput style={styles.textInput} placeholder="Nome do Titular do Cartão:" onChangeText={text => setNome(text)} />
+          <TouchableOpacity style={styles.btnCadastro} onPress={() => Home()}>
             <Text style={styles.btnCadastro}>Confirmar</Text>
           </TouchableOpacity>
         </View>
