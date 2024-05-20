@@ -13,7 +13,7 @@ import { auth, db } from "./fireBaseConfirg";
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState('');
 
   const navigation = useNavigation();
 

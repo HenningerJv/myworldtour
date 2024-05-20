@@ -1,11 +1,8 @@
 import { Picker } from "@react-native-picker/picker";
-import { useState } from "react";
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import Home from "./Home";
-import React, { useState } from "react";
-import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from "react-native";
-import LinearGradient from 'react-native-linear-gradient';
+import React, { useEffect, useState } from "react";
+import { View, StyleSheet, Text, StatusBar, TouchableOpacity, TextInput } from "react-native";
 import { LiaHomeSolid } from "react-icons/lia";
 import { TbTicket } from "react-icons/tb";
 import { CiLogout } from "react-icons/ci";
@@ -13,7 +10,8 @@ import { FaSuitcase } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
 import { MdHotel } from "react-icons/md"
-import { Picker } from "@react-native-picker/picker";
+import navigation from "./navigation";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function ConfirmeCompra() {
@@ -25,14 +23,23 @@ export default function ConfirmeCompra() {
   const [numeroCartao, setNumeroCartao] = useState('');
   const [cvv, setCvv] = useState('');
   const [tipoPagamento, setTipoPagamento] = useState('');
+  const [user, setUser] = useState('');
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (user) {
+      setNome(user.nome);
+      setNacionalidade(user.nacionalidade);
+    }
+  }, [user]);
 
   return (
     <>
       <LinearGradient
         colors={['#00FF94', '#00FF94', '#2F829C']}
         style={styles.linearGradient}>
-        <Text style={styles.text}>Bem-vindo, {nome}</Text>
-        <Text style={styles.text}>Nacionalidade: {nacionalidade}</Text>
+        <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
+        <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <LiaHomeSolid name="home-outline" size={30} color="black" />

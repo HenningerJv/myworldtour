@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
 import { LineChart } from 'react-native-chart-kit';
@@ -27,14 +27,22 @@ export default function HallMoedas() {
   const [nome, setNome] = useState('');
   const [nacionalidade, setNacionalidade] = useState('');
   const navigation = useNavigation();
+  const [user, setUser] = useState('');
+
+  useEffect(() => {
+    if (user) {
+      setNome(user.nome);
+      setNacionalidade(user.nacionalidade);
+    }
+  }, [user]);
 
   return (
     <>
       <LinearGradient
         colors={['#00FF94', '#00FF94', '#2F829C']}
         style={styles.linearGradient}>
-        <Text style={styles.text}>Bem-vindo, {nome}</Text>
-        <Text style={styles.text}>Nacionalidade: {nacionalidade}</Text>
+        <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
+        <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
         <View style={styles.container}>
           <StatusBar hidden />
           <View style={styles.container2}>

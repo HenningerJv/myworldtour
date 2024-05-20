@@ -1,7 +1,6 @@
 import { Picker } from "@react-native-picker/picker";
 import { useEffect, useState } from "react";
 import LinearGradient from "react-native-linear-gradient";
-import Home from "./Home";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native";
 import { LiaHomeSolid } from "react-icons/lia";
 import { TbTicket } from "react-icons/tb";
@@ -9,7 +8,8 @@ import { CiLogout } from "react-icons/ci";
 import { FaSuitcase } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
-import { MdHotel } from "react-icons/md"
+import { MdHotel } from "react-icons/md";
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function Home() {
