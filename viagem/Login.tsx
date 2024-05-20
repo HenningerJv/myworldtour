@@ -6,19 +6,32 @@ import Cadastro from "./Cadastro";
 import navigation from "./navigation";
 import { useNavigation } from '@react-navigation/native';
 import Home from "./Home";
+import { doc, DocumentData, getDoc } from "firebase/firestore";
+import { auth, db } from "./fireBaseConfirg";
 
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
+  const [user, setUser] = useState(null);
 
   const navigation = useNavigation();
 
-  const handleLogin = () => {
-    if (email === 'usuario@example.com' && senha === '123456') {
-      navigation.navigate('Home'); 
-    } else {
-      Alert.alert('Erro', 'Credenciais inválidas');
+  const handleLogin = async () => {
+    try {
+      const userCredential = await signInWithEmailAndPassword(auth, email, senha);
+      const uid = userCredential.user.uid;
+      const userDoc = await getDoc(doc(db, 'Usuario', uid));
+      if (userDoc.exists()) {
+        const userData = userDoc.data();
+        setUser(userData);
+        setNome(userData.nome);
+        setNacionalidade(userData.nacionalidade);
+      } else {
+        console.log('No such document!');
+      }
+    } catch (error) {
+      console.error('Error logging in: ', error);
     }
   };
 
@@ -98,3 +111,19 @@ const styles = StyleSheet.create({
 function alert(senha: string) {
   throw new Error("Function not implemented.");
 }
+function signInWithEmailAndPassword(auth: any, email: string, senha: string) {
+  throw new Error("Function not implemented.");
+}
+
+function setUser(userData: DocumentData) {
+  throw new Error("Function not implemented.");
+}
+
+function setNome(nome: any) {
+  throw new Error("Function not implemented.");
+}
+
+function setNacionalidade(nacionalidade: any) {
+  throw new Error("Function not implemented.");
+}
+
