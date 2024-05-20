@@ -6,6 +6,7 @@ import Cadastro from './Cadastro';
 import Home from './Home';
 import ConfirmeCompra from './confirmeCompra';
 import ConversorMoeda from './conversorMoeda';
+import HallMoedas from './hallMoedas';
 
 const Stack = createStackNavigator();
 
@@ -34,6 +35,11 @@ const Navigation = () => {
         <Stack.Screen
           name="ConversorMoeda"
           component={ConversorMoeda}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="HallMoeda"
+          component={HallMoedas}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
