@@ -41,31 +41,31 @@ export default function ConfirmeCompra() {
         <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
         <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
         <View style={styles.iconContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.navigate('home')}>
             <LiaHomeSolid name="home-outline" size={30} color="black" />
             <Text>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <TbTicket name="home-outline" size={30} color="black" />
+          <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <TbTicket name="ticket-outline" size={30} color="black" />
             <Text>Passagens</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <MdHotel name="home-outline" size={30} color="black" />
+            <MdHotel name="hotel-outline" size={30} color="black" />
             <Text>Reservas</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <FaSuitcase name="home-outline" size={30} color="black" />
+            <FaSuitcase name="suitcase-outline" size={30} color="black" />
             <Text>Viagens</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
-            <LiaCoinsSolid name="home-outline" size={30} color="black" />
+          <TouchableOpacity onPress={() => navigation.navigate('hallMoedas')}>
+            <LiaCoinsSolid name="coins-outline" size={30} color="black" />
             <Text>Conversor</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('')}>
             <IoSettingsOutline name="settings-outline" size={30} color="black" />
             <Text>Configurações</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
+          <TouchableOpacity onPress={() => navigation.navigate('login')}>
             <CiLogout name="log-out-outline" size={30} color="black" />
             <Text>Sair</Text>
           </TouchableOpacity>
