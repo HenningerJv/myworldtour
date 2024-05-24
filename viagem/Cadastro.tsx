@@ -30,7 +30,7 @@ export default function Cadastro() {
       return;
     }
 
-    navigation.navigate('login');
+    navigation.navigate("Login");
   }
   return (
     <LinearGradient

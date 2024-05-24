@@ -16,31 +16,25 @@ const Navigation = () => {
       <Stack.Navigator>
         <Stack.Screen
           name="Login"
-          component={Login}
-          options={{ headerShown: false }} />
+          component={Login} />
         <Stack.Screen
           name="Cadastro"
-          component={Cadastro}
-          options={{ headerShown: false }} />
+          component={Cadastro} />
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ConfirmeCompra"
           component={ConfirmeCompra}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="ConversorMoeda"
           component={ConversorMoeda}
-          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="HallMoeda"
           component={HallMoedas}
-          options={{ headerShown: false }}
         />
       </Stack.Navigator>
     </NavigationContainer>

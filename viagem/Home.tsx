@@ -10,6 +10,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
 import { MdHotel } from "react-icons/md";
 import { useNavigation } from '@react-navigation/native';
+import navigation from "./navigation";
 
 
 export default function Home() {
