@@ -50,7 +50,7 @@ export default function Login() {
         <TouchableOpacity style={styles.btnCadastro} onPress={() => Home()}>
           <Text style={styles.btnCadastro} onPress={handleLogin}>Entrar</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={Cadastro}>
+        <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
           <Text style={styles.linkText}>Não tem Conta?</Text>
         </TouchableOpacity>
       </View>
