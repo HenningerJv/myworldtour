@@ -4,12 +4,9 @@ import Home from "./Home";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity, TextInput } from "react-native";
 import { LiaHomeSolid } from "react-icons/lia";
-import { TbTicket } from "react-icons/tb";
 import { CiLogout } from "react-icons/ci";
-import { FaSuitcase } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
-import { MdHotel } from "react-icons/md"
 import navigation from "./navigation";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";

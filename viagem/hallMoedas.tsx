@@ -5,12 +5,9 @@ import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { LiaHomeSolid } from "react-icons/lia";
-import { TbTicket } from "react-icons/tb";
 import { CiLogout } from "react-icons/ci";
-import { FaSuitcase } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
-import { MdHotel } from "react-icons/md";
 import { RootStackParamList } from "./types";
 
 const screenWidth = Dimensions.get("window").width;
@@ -87,7 +84,7 @@ export default function HallMoedas() {
               <LiaCoinsSolid name="home-outline" size={30} color="black" />
               <Text>Conversor</Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('')}>
+            <TouchableOpacity onPress={() => navigation.navigate('Configuracoes')}>
               <IoSettingsOutline name="settings-outline" size={30} color="black" />
               <Text>Configurações</Text>
             </TouchableOpacity>
