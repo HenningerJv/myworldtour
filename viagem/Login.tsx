@@ -28,11 +28,13 @@ export default function Login() {
       if (userDoc.exists()) {
         const userData = userDoc.data();
         setUser(userData as { nome: string; nacionalidade: string });
+        navigation.navigate('Home');
       } else {
         console.log('No such document!');
       }
     } catch (error) {
       console.error('Error logging in: ', error);
+      Alert.alert('Login Failed', 'Invalid email or password.');
     }
   };
 
