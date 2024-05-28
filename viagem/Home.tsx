@@ -1,20 +1,22 @@
 import { Picker } from "@react-native-picker/picker";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import LinearGradient from "react-native-linear-gradient";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native";
-import { LiaHomeSolid } from "react-icons/lia";
-import { CiLogout } from "react-icons/ci";
-import { IoSettingsOutline } from "react-icons/io5";
-import { LiaCoinsSolid } from "react-icons/lia";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import navigation from "./navigation";
 import { RootStackParamList } from "./types";
+
+interface User {
+  nome: string;
+  nacionalidade: string;
+}
 
 
 export default function Home() {
   const [nome, setNome] = useState('');
   const [nacionalidade, setNacionalidade] = useState('')
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState<User | null>(null);
 
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -30,23 +32,23 @@ export default function Home() {
       <LinearGradient
         colors={['#00FF94', '#00FF94', '#2F829C']}
         style={styles.linearGradient}>
-        <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
-        <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
+        <Text style={styles.text}>Bem-vindo, {user?.nome ?? 'Visitante'}</Text>
+        <Text style={styles.text}>Nacionalidade: {user?.nacionalidade ?? 'Desconhecida'}</Text>
         <View style={styles.iconContainer}>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-            <LiaHomeSolid name="home-outline" size={30} color="black" />
+            <Icon name="home-outline" size={30} color="black" />
             <Text>Home</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
-            <LiaCoinsSolid name="home-outline" size={30} color="black" />
+            <Icon name="cash-outline" size={30} color="black" />
             <Text>Conversor</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Configuracoes')}>
-            <IoSettingsOutline name="settings-outline" size={30} color="black" />
+            <Icon name="settings-outline" size={30} color="black" />
             <Text>Configurações</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-            <CiLogout name="log-out-outline" size={30} color="black" />
+            <Icon name="log-out-outline" size={30} color="black" />
             <Text>Sair</Text>
           </TouchableOpacity>
         </View>

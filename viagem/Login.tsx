@@ -9,12 +9,14 @@ import Home from "./Home";
 import { doc, DocumentData, getDoc } from "firebase/firestore";
 import { auth, db } from "./fireBaseConfirg";
 import { RootStackParamList } from "./types";
+import { signInWithEmailAndPassword } from 'firebase/auth';
+
 
 
 export default function Login() {
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState<{ nome: string; nacionalidade: string } | null>(null);
 
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -25,9 +27,7 @@ export default function Login() {
       const userDoc = await getDoc(doc(db, 'Usuario', uid));
       if (userDoc.exists()) {
         const userData = userDoc.data();
-        setUser(userData);
-        setNome(userData.nome);
-        setNacionalidade(userData.nacionalidade);
+        setUser(userData as { nome: string; nacionalidade: string });
       } else {
         console.log('No such document!');
       }
@@ -108,23 +108,3 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
   }
 });
-
-function alert(senha: string) {
-  throw new Error("Function not implemented.");
-}
-function signInWithEmailAndPassword(auth: any, email: string, senha: string) {
-  throw new Error("Function not implemented.");
-}
-
-function setUser(userData: DocumentData) {
-  throw new Error("Function not implemented.");
-}
-
-function setNome(nome: any) {
-  throw new Error("Function not implemented.");
-}
-
-function setNacionalidade(nacionalidade: any) {
-  throw new Error("Function not implemented.");
-}
-

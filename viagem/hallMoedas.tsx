@@ -4,11 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { LiaHomeSolid } from "react-icons/lia";
-import { CiLogout } from "react-icons/ci";
-import { IoSettingsOutline } from "react-icons/io5";
-import { LiaCoinsSolid } from "react-icons/lia";
 import { RootStackParamList } from "./types";
+import { Icon } from "react-native-vector-icons/Icon";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -21,10 +18,15 @@ const data = {
   ],
 };
 
+interface User {
+  nome: string;
+  nacionalidade: string;
+}
+
 export default function HallMoedas() {
   const [nome, setNome] = useState('');
   const [nacionalidade, setNacionalidade] = useState('');
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState<User | null>(null);
 
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
@@ -40,8 +42,8 @@ export default function HallMoedas() {
       <LinearGradient
         colors={['#00FF94', '#00FF94', '#2F829C']}
         style={styles.linearGradient}>
-        <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
-        <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
+        <Text style={styles.text}>Bem-vindo, {user?.nome ?? 'Visitante'}</Text>
+        <Text style={styles.text}>Nacionalidade: {user?.nacionalidade ?? 'Desconhecida'}</Text>
         <View style={styles.container}>
           <StatusBar hidden />
           <View style={styles.container2}>
@@ -77,19 +79,19 @@ export default function HallMoedas() {
           </View>
           <View style={styles.iconContainer}>
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <LiaHomeSolid name="home-outline" size={30} color="black" />
+              <Icon name="home-outline" size={30} color="black" />
               <Text>Home</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
-              <LiaCoinsSolid name="home-outline" size={30} color="black" />
+              <Icon name="home-outline" size={30} color="black" />
               <Text>Conversor</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Configuracoes')}>
-              <IoSettingsOutline name="settings-outline" size={30} color="black" />
+              <Icon name="settings-outline" size={30} color="black" />
               <Text>Configurações</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-              <CiLogout name="log-out-outline" size={30} color="black" />
+              <Icon name="log-out-outline" size={30} color="black" />
               <Text>Sair</Text>
             </TouchableOpacity>
           </View>
