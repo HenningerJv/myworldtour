@@ -4,7 +4,7 @@ import Home from "./Home";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity, TextInput } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
-import navigation from "./navigation";
+import navigation from "./App";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "./types";

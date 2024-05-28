@@ -4,7 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "react-native";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import navigation from "./navigation";
+import navigation from "./App";
 import { RootStackParamList } from "./types";
 
 interface User {

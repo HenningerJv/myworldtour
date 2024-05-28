@@ -1,15 +1,44 @@
-/**
- * @format
- */
-
-import { AppRegistry } from 'react-native';
-import { name as appName } from './app.json';
 import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
 import Login from './Login';
+import Cadastro from './Cadastro';
+import Home from './Home';
+import ConfirmeCompra from './confirmeCompra';
+import ConversorMoeda from './conversorMoeda';
+import HallMoedas from './hallMoedas';
 
-export default function App() {
-    return (
-            <Login />
-    )
-}
-AppRegistry.registerComponent(appName, () => App);
+const Stack = createStackNavigator();
+
+const Navigation = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Login'
+          component={Login} />
+        <Stack.Screen
+          name='Cadastro'
+          component={Cadastro} />
+        <Stack.Screen
+          name="Home"
+          component={Home}
+        />
+        <Stack.Screen
+          name='ConfirmeCompra'
+          component={ConfirmeCompra}
+        />
+        <Stack.Screen
+          name='ConversorMoeda'
+          component={ConversorMoeda}
+        />
+        <Stack.Screen
+          name='HallMoeda'
+          component={HallMoedas}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default Navigation;
