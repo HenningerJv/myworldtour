@@ -11,7 +11,9 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
 import { MdHotel } from "react-icons/md"
 import navigation from "./navigation";
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from "./types";
 
 
 export default function ConfirmeCompra() {
@@ -24,7 +26,12 @@ export default function ConfirmeCompra() {
   const [cvv, setCvv] = useState('');
   const [tipoPagamento, setTipoPagamento] = useState('');
   const [user, setUser] = useState('');
-  const navigation = useNavigation();
+
+  type Login = StackNavigationProp<RootStackParamList, 'Login'>;
+  type Home = StackNavigationProp<RootStackParamList, 'Home'>
+  type HallMoedas = StackNavigationProp<RootStackParamList, 'HallMoedas'>
+
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     if (user) {
@@ -41,31 +48,19 @@ export default function ConfirmeCompra() {
         <Text style={styles.text}>Bem-vindo, {user.nome}</Text>
         <Text style={styles.text}>Nacionalidade: {user.nacionalidade}</Text>
         <View style={styles.iconContainer}>
-          <TouchableOpacity onPress={() => navigation.navigate('home')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
             <LiaHomeSolid name="home-outline" size={30} color="black" />
             <Text>Home</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <TbTicket name="ticket-outline" size={30} color="black" />
-            <Text>Passagens</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <MdHotel name="hotel-outline" size={30} color="black" />
-            <Text>Reservas</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
-            <FaSuitcase name="suitcase-outline" size={30} color="black" />
-            <Text>Viagens</Text>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('hallMoedas')}>
+          <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
             <LiaCoinsSolid name="coins-outline" size={30} color="black" />
             <Text>Conversor</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Configuracoes')}>
             <IoSettingsOutline name="settings-outline" size={30} color="black" />
             <Text>Configurações</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigation.navigate('login')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Login')}>
             <CiLogout name="log-out-outline" size={30} color="black" />
             <Text>Sair</Text>
           </TouchableOpacity>

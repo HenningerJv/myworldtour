@@ -15,25 +15,25 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Login"
+          name='Login'
           component={Login} />
         <Stack.Screen
-          name="Cadastro"
+          name='Cadastro'
           component={Cadastro} />
         <Stack.Screen
           name="Home"
           component={Home}
         />
         <Stack.Screen
-          name="ConfirmeCompra"
+          name='ConfirmeCompra'
           component={ConfirmeCompra}
         />
         <Stack.Screen
-          name="ConversorMoeda"
+          name='ConversorMoeda'
           component={ConversorMoeda}
         />
         <Stack.Screen
-          name="HallMoeda"
+          name='HallMoeda'
           component={HallMoedas}
         />
       </Stack.Navigator>

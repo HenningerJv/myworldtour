@@ -4,13 +4,12 @@
 
 import { AppRegistry } from 'react-native';
 import { name as appName } from './app.json';
-import Navigation from './navigation';
 import React from 'react';
+import Login from './Login';
 
 export default function App() {
     return (
-            <Navigation />
+            <Login />
     )
-
 }
 AppRegistry.registerComponent(appName, () => App);

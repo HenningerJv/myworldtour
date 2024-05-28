@@ -3,7 +3,7 @@ import { View, StyleSheet, Text, StatusBar, TouchableOpacity } from "react-nativ
 import LinearGradient from 'react-native-linear-gradient';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { LiaHomeSolid } from "react-icons/lia";
 import { TbTicket } from "react-icons/tb";
 import { CiLogout } from "react-icons/ci";
@@ -11,6 +11,7 @@ import { FaSuitcase } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LiaCoinsSolid } from "react-icons/lia";
 import { MdHotel } from "react-icons/md";
+import { RootStackParamList } from "./types";
 
 const screenWidth = Dimensions.get("window").width;
 
@@ -26,8 +27,9 @@ const data = {
 export default function HallMoedas() {
   const [nome, setNome] = useState('');
   const [nacionalidade, setNacionalidade] = useState('');
-  const navigation = useNavigation();
   const [user, setUser] = useState('');
+
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   useEffect(() => {
     if (user) {
@@ -80,18 +82,6 @@ export default function HallMoedas() {
             <TouchableOpacity onPress={() => navigation.navigate('Home')}>
               <LiaHomeSolid name="home-outline" size={30} color="black" />
               <Text>Home</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-              <TbTicket name="home-outline" size={30} color="black" />
-              <Text>Passagens</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('')}>
-              <MdHotel name="home-outline" size={30} color="black" />
-              <Text>Reservas</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => navigation.navigate('')}>
-              <FaSuitcase name="home-outline" size={30} color="black" />
-              <Text>Viagens</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
               <LiaCoinsSolid name="home-outline" size={30} color="black" />

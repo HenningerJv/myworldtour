@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
-import navigation from "./navigation";
+import Navigation from "./navigation";
 import Login from "./Login";
 import { useNavigation } from '@react-navigation/native';
+import { StackNavigationProp } from "@react-navigation/stack";
+import { RootStackParamList } from './types';
 
 
 export default function Cadastro() {
@@ -17,7 +19,9 @@ export default function Cadastro() {
   const [nacionalidade, setNacionalidade] = useState('')
   const [genero, setGenero] = useState('')
 
-  const navigation = useNavigation();
+  type Login = StackNavigationProp<RootStackParamList, 'Login'>
+
+  const navigation = useNavigation<Login>();
 
   const cadastro = () => {
     if (!nome || !email || !cpf || !senha || !confirmeSenha || !endereco || !nacionalidade || !genero) {
@@ -30,7 +34,7 @@ export default function Cadastro() {
       return;
     }
 
-    navigation.navigate("Login");
+    navigation.navigate('Login');
   }
   return (
     <LinearGradient

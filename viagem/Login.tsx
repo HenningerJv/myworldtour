@@ -4,10 +4,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import { createStackNavigator } from '@react-navigation/stack';
 import Cadastro from "./Cadastro";
 import navigation from "./navigation";
-import { useNavigation } from '@react-navigation/native';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
 import Home from "./Home";
 import { doc, DocumentData, getDoc } from "firebase/firestore";
 import { auth, db } from "./fireBaseConfirg";
+import { RootStackParamList } from "./types";
 
 
 export default function Login() {
@@ -15,7 +16,7 @@ export default function Login() {
   const [senha, setSenha] = useState('');
   const [user, setUser] = useState('');
 
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
   const handleLogin = async () => {
     try {
