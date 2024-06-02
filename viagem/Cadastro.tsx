@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from 'react-native'
+import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Alert } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
 import Navigation from "./App";
@@ -7,6 +7,9 @@ import Login from "./Login";
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from './types';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from "firebase/firestore";
+import { auth, db } from "./fireBaseConfirg";
 
 
 export default function Cadastro() {
@@ -19,23 +22,46 @@ export default function Cadastro() {
   const [nacionalidade, setNacionalidade] = useState('')
   const [genero, setGenero] = useState('')
 
-  type Login = StackNavigationProp<RootStackParamList, 'Login'>
-
+  type Login = StackNavigationProp<RootStackParamList, 'Login'>;
   const navigation = useNavigation<Login>();
 
-  const cadastro = () => {
+  const cadastro = async () => {
     if (!nome || !email || !cpf || !senha || !confirmeSenha || !endereco || !nacionalidade || !genero) {
-      alert('Preencha todos os campos');
+      Alert.alert('Preencha todos os campos');
       return;
     }
 
     if (senha !== confirmeSenha) {
-      alert('As senhas não coincidem');
+      Alert.alert('As senhas não coincidem');
       return;
     }
 
-    navigation.navigate('Login');
-  }
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, senha);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, 'Usuario', user.uid), {
+        nome,
+        email,
+        cpf,
+        endereco,
+        nacionalidade,
+        genero,
+      });
+
+      Alert.alert('Cadastro realizado com sucesso');
+      navigation.navigate('Login');
+    } catch (error: any) {
+      // Trate o erro adequadamente
+      console.error('Erro ao cadastrar usuário:', error);
+      if (error instanceof Error) {
+        Alert.alert('Erro ao cadastrar usuário', error.message);
+      } else {
+        Alert.alert('Erro ao cadastrar usuário', 'Ocorreu um erro desconhecido.');
+      }
+    }
+  };
+
   return (
     <LinearGradient
       colors={['#00FF94', '#00FF94', '#2F829C']}
@@ -48,9 +74,7 @@ export default function Cadastro() {
         <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} />
         <TextInput style={styles.textInput} placeholder="Informe o seu Endereço:" onChangeText={text => setEndereco(text)} />
         <Picker selectedValue={nacionalidade}
-          onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
-            setNacionalidade(itemValue)
-          }>
+          onValueChange={(itemValue: React.SetStateAction<string>) => setNacionalidade(itemValue)}>
           <Picker.Item label='Selecione sua Nacionalidade' value='' />
           <Picker.Item label='Africana' value='africana' />
           <Picker.Item label='Mexicana' value='mexicana' />
@@ -72,14 +96,12 @@ export default function Cadastro() {
           <Picker.Item label='Venezuelana' value='venezuelana' />
           <Picker.Item label='Austriaca' value='austriaca' />
           <Picker.Item label='Chinesa' value='chinesa' />
-          <Picker.Item label='Japonesa' value='japosena' />
+          <Picker.Item label='Japonesa' value='japonesa' />
           <Picker.Item label='Coreana' value='Coreana' />
           <Picker.Item label='Russa' value='russa' />
         </Picker>
         <Picker selectedValue={genero}
-          onValueChange={(itemValue: React.SetStateAction<string>, itemIndex: any) =>
-            setGenero(itemValue)
-          }>
+          onValueChange={(itemValue: React.SetStateAction<string>) => setGenero(itemValue)}>
           <Picker.Item label='Selecione seu Gênero' value='' />
           <Picker.Item label='Masculino' value='masculino' />
           <Picker.Item label='Feminino' value='feminino' />
@@ -97,13 +119,14 @@ export default function Cadastro() {
           placeholder="Confirme sua senha:"
           onChangeText={text => setConfirmeSenha(text)}
         />
-        <TouchableOpacity style={styles.btnCadastro} onPress={() => Login()}>
+        <TouchableOpacity style={styles.btnCadastro} onPress={cadastro}>
           <Text style={styles.btnCadastro}>Cadastrar</Text>
         </TouchableOpacity>
       </View>
     </LinearGradient>
   )
 }
+
 
 const styles = StyleSheet.create({
   linearGradient: {
