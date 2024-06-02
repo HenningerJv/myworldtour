@@ -3,7 +3,7 @@ import LinearGradient from "react-native-linear-gradient";
 import Home from "./Home";
 import React, { useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TouchableOpacity, TextInput } from "react-native";
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import navigation from "./App";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";

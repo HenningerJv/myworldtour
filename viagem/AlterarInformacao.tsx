@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Alert } from 'react-native'
 import { Picker } from '@react-native-picker/picker';
 import LinearGradient from 'react-native-linear-gradient';
+import Navigation from "./App";
+import Login from "./Login";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from './types';
-import { doc, setDoc } from "firebase/firestore";
+import { setDoc, doc } from "firebase/firestore";
 import { auth, db } from "./fireBaseConfirg";
-import Icon from "react-native-vector-icons/MaterialIcons";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface User {
     nome: string;
@@ -19,10 +21,10 @@ export default function Cadastro() {
     const [email, setEmail] = useState('');
     const [cpf, setCpf] = useState('');
     const [senha, setSenha] = useState('');
-    const [confirmeSenha, setConfirmeSenha] = useState('');
-    const [endereco, setEndereco] = useState('');
-    const [nacionalidade, setNacionalidade] = useState('');
-    const [genero, setGenero] = useState('');
+    const [confirmeSenha, setConfirmeSenha] = useState('')
+    const [endereco, setEndereco] = useState('')
+    const [nacionalidade, setNacionalidade] = useState('')
+    const [genero, setGenero] = useState('')
     const [user, setUser] = useState<User | null>(null);
 
     type Home = StackNavigationProp<RootStackParamList>;
@@ -75,19 +77,19 @@ export default function Cadastro() {
             <View style={styles.container}>
                 <View style={styles.iconContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('Home')}>
-                        <Icon name="home" size={30} color="black" />
+                        <Icon name="home-outline" size={30} color="black" />
                         <Text>Home</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('HallMoedas')}>
-                        <Icon name="monetization_on" size={30} color="black" />
+                        <Icon name="home-outline" size={30} color="black" />
                         <Text>Conversor</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Configuracoes')}>
-                        <Icon name="settings" size={30} color="black" />
+                        <Icon name="settings-outline" size={30} color="black" />
                         <Text>Configurações</Text>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                        <Icon name="logout" size={30} color="black" />
+                        <Icon name="log-out-outline" size={30} color="black" />
                         <Text>Sair</Text>
                     </TouchableOpacity>
                 </View>
@@ -121,7 +123,7 @@ export default function Cadastro() {
                     <Picker.Item label='Austriaca' value='austriaca' />
                     <Picker.Item label='Chinesa' value='chinesa' />
                     <Picker.Item label='Japonesa' value='japonesa' />
-                    <Picker.Item label='Coreana' value='coreana' />
+                    <Picker.Item label='Coreana' value='Coreana' />
                     <Picker.Item label='Russa' value='russa' />
                 </Picker>
                 <Picker selectedValue={genero}
@@ -144,12 +146,13 @@ export default function Cadastro() {
                     onChangeText={text => setConfirmeSenha(text)}
                 />
                 <TouchableOpacity style={styles.btnCadastro} onPress={updateUser}>
-                    <Text style={styles.btnCadastroText}>Atualizar Informações</Text>
+                    <Text style={styles.btnCadastro}>Atualizar Informações</Text>
                 </TouchableOpacity>
             </View>
         </LinearGradient >
     )
 }
+
 
 const styles = StyleSheet.create({
     linearGradient: {
@@ -182,17 +185,14 @@ const styles = StyleSheet.create({
     },
     btnCadastro: {
         backgroundColor: '#00FF94',
-        padding: 10,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: 20,
-        width: '60%',
-    },
-    btnCadastroText: {
         color: 'black',
         fontWeight: '600',
-        fontSize: 18,
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 9,
+        alignContent: 'center',
+        width: '60%',
+        textAlign: 'center'
     },
     textInput: {
         width: '90%',
@@ -207,3 +207,7 @@ const styles = StyleSheet.create({
         shadowRadius: 3.84,
     }
 });
+
+function alert(confirmeSenha: string) {
+    throw new Error("Function not implemented.");
+}

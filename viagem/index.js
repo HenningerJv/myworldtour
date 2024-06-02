@@ -12,9 +12,13 @@ import ConfirmeCompra from './confirmeCompra';
 import ConversorMoeda from './conversorMoeda';
 import HallMoedas from './hallMoedas';
 import Configuracoes from './Configuracoes';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
+const Stack = createStackNavigator();
 
 export default function App() {
+
     return (
         <NavigationContainer>
             <Stack.Navigator>
@@ -43,6 +47,10 @@ export default function App() {
                 <Stack.Screen
                     name='Configuracoes'
                     component={Configuracoes}
+                />
+                <Stack.Screen
+                    name='AlterarInformacao'
+                    component={AlterarInformacao}
                 />
             </Stack.Navigator>
         </NavigationContainer>

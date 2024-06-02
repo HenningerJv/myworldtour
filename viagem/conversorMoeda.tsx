@@ -6,7 +6,7 @@ import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity } from "
 import navigation from "./App";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "./types";
-import { Icon } from "react-native-vector-icons/Icon";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface User {
     nome: string;

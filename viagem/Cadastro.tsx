@@ -119,7 +119,7 @@ export default function Cadastro() {
           placeholder="Confirme sua senha:"
           onChangeText={text => setConfirmeSenha(text)}
         />
-        <TouchableOpacity style={styles.btnCadastro} onPress={cadastro}>
+        <TouchableOpacity style={styles.btnCadastro} onPress={Login}>
           <Text style={styles.btnCadastro}>Cadastrar</Text>
         </TouchableOpacity>
       </View>

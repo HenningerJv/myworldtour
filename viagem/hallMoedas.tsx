@@ -5,7 +5,7 @@ import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from "react-native";
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "./types";
-import { Icon } from "react-native-vector-icons/Icon";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const screenWidth = Dimensions.get("window").width;
 
