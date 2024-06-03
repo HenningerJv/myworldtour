@@ -1,17 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Button, Alert } from "react-native"
+import React, { useState } from "react";
+import { View, StyleSheet, Text, StatusBar, TextInput, TouchableOpacity, Alert } from "react-native";
 import LinearGradient from 'react-native-linear-gradient';
-import { createStackNavigator } from '@react-navigation/stack';
-import Cadastro from "./Cadastro";
-import navigation from "./App";
-import { NavigationProp, useNavigation } from '@react-navigation/native';
-import Home from "./Home";
-import { doc, DocumentData, getDoc } from "firebase/firestore";
+import { useNavigation } from '@react-navigation/native';
+import { NavigationProp } from '@react-navigation/native';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "./fireBaseConfirg";
 import { RootStackParamList } from "./types";
-import { signInWithEmailAndPassword } from 'firebase/auth';
-
-
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -45,10 +40,21 @@ export default function Login() {
       <View style={styles.container}>
         <StatusBar hidden />
         <Text style={styles.text}>Bem-vindo</Text>
-        <TextInput style={styles.textInput} placeholder="Informe o seu Email:" onChangeText={text => setEmail(text)} value="email" />
-        <TextInput secureTextEntry={true} style={styles.textInput} placeholder="Crie sua senha:" onChangeText={text => setSenha(text)} value="senha" />
-        <TouchableOpacity style={styles.btnCadastro} onPress={() => Home()}>
-          <Text style={styles.btnCadastro} onPress={handleLogin}>Entrar</Text>
+        <TextInput 
+          style={styles.textInput} 
+          placeholder="Informe o seu Email:" 
+          onChangeText={text => setEmail(text)} 
+          value={email}
+        />
+        <TextInput 
+          secureTextEntry={true} 
+          style={styles.textInput} 
+          placeholder="Crie sua senha:" 
+          onChangeText={text => setSenha(text)} 
+          value={senha}
+        />
+        <TouchableOpacity style={styles.btnCadastro} onPress={handleLogin}>
+          <Text style={styles.btnCadastro}>Entrar</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={() => navigation.navigate('Cadastro')}>
           <Text style={styles.linkText}>Não tem Conta?</Text>
@@ -67,12 +73,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     padding: 8,
-    height: 3,
     marginLeft: 55,
     width: '80%',
     backgroundColor: 'white',
     borderRadius: 7,
-    paddingTop: 1,
     alignItems: 'center',
     alignContent: 'center',
   },
@@ -89,7 +93,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 9,
-    alignContent: 'center',
     width: '60%',
     textAlign: 'center'
   },
