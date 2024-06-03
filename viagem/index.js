@@ -14,6 +14,7 @@ import HallMoedas from './hallMoedas';
 import Configuracoes from './Configuracoes';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 
@@ -47,10 +48,6 @@ export default function App() {
                 <Stack.Screen
                     name='Configuracoes'
                     component={Configuracoes}
-                />
-                <Stack.Screen
-                    name='AlterarInformacao'
-                    component={AlterarInformacao}
                 />
             </Stack.Navigator>
         </NavigationContainer>
