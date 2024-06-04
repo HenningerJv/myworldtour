@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { NavigationProp } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "./fireBaseConfirg";
+import { auth, db } from "./fireBaseConfig";
 import { RootStackParamList } from "./types";
 
 export default function Login() {

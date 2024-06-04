@@ -7,7 +7,7 @@ import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from './types';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { setDoc, doc } from "firebase/firestore";
-import { auth, db } from "./fireBaseConfirg";
+import { auth, db } from "./fireBaseConfig";
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');

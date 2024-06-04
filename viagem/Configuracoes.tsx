@@ -5,7 +5,7 @@ import { View, StyleSheet, Text, TextInput, TouchableOpacity, Alert } from "reac
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from "./types";
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { auth, firestore } from './firebaseConfig';
+import { auth, firestore } from './fireBaseConfig';
 
 
 interface User {
@@ -32,10 +32,8 @@ export default function ConversorMoeda() {
             const currentUser = auth.currentUser;
 
             if (currentUser) {
-                // Deletar os dados do Firestore
                 await firestore.collection('Usuario').doc(currentUser.uid).delete();
 
-                // Deletar a autenticação do Firebase Auth
                 await currentUser.delete();
 
                 setUser(null);

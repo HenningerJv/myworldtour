@@ -8,7 +8,7 @@ import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from './types';
 import { setDoc, doc } from "firebase/firestore";
-import { auth, db } from "./fireBaseConfirg";
+import { auth, db } from "./fireBaseConfig";
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface User {
