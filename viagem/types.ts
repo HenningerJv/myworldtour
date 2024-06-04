@@ -4,5 +4,5 @@ export type RootStackParamList = {
     HallMoedas: undefined;
     Configuracoes: undefined;
     Cadastro: undefined;
-    AlterarNome: undefined
+    AlterarInformacao: undefined
   };
